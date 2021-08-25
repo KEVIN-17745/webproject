@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Bio Lab</title>
+    <title> KK Lab</title>
 
     <link rel="shortcut icon" href="{{url('frontend/assets/images/fav.jpg')}}">
     <link rel="stylesheet" href="{{url('frontend/assets/css/bootstrap.min.css')}}">

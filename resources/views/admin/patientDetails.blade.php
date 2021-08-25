@@ -1,5 +1,6 @@
 @extends('layouts.admin_layout.admin_layout')
 @section('content')
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -79,7 +80,7 @@
     }
 
     table.table td:last-child {
-        width: 130px;
+        width: 450px;
     }
 
     table.table td a {
@@ -165,7 +166,7 @@
                         <div class="page-title-icon">
 
                         </div>
-                        <div>Announcements
+                        <div>
                             <div class="page-title-subheading">
                             </div>
                         </div>
@@ -175,11 +176,10 @@
             <div>
                 <div class="row">
                     <div class="col-sm-8">
-                        <h4>Announcements <b>details</b> </h4>
+                        <h4>Patient <b>details</b> </h4>
                     </div>
-                    <div class="col-sm-4">
-                        <a href="{{url('admin/add-edit-announcement')}}" style="max-width:150px; float:right; display:inline-block;" class="btn btn-block btn-success">Add New </a>
-                    </div>
+                    
+                    
                 </div>
                 <div class="col-lg-12">
                     <div class="main-card mb-3 card">
@@ -194,33 +194,68 @@
                         <div class="card-body">
                             <h5 class="card-title">Table </h5>
                             <table class="mb-0 table table-bordered">
-                                <thead>
+                                
+                                    
                                     <tr>
-                                        <th>ID</th>
-                                        <th> Date</th>
-                                        <th> Title</th>
-                                        <th> content</th>
-
-                                        <th>Actions</th>
-
+                                        <td >Patient Name :</td>
+                                        
+                                        <td>{{ $Details['Name'] }}</td>
+                                  
+                                        
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($announcement as $ann)
                                     <tr>
-                                        <td>{{ $ann->id }}</td>
-                                        <td>{{ $ann->date }}</td>
-                                        <td>{{ $ann->title }}</td>
-                                        <td>{{ $ann->content }}</td>
-
-                                        <td>
-
-                                            <a href="{{url('admin/add-edit-announcement/'.$ann->id )}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                            <a class="confirmDelete delete" name="Announcements" href="{{url('admin/delete-announcement/'.$ann->id)}}" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                                        </td>
-                                        @endforeach
+                                        <td>Patient DOB :</td>
+                                        
+                                        <td>{{ $Details['DOB'] }}</td>
+                                  
+                                        
                                     </tr>
-                                </tbody>
+                                    <tr>
+                                        <td>Patient Mobile Number : </td>
+                                        
+                                        <td>{{ $Details['mobileNumber'] }}</td>
+                                  
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Patient Address : </td>
+                                        
+                                        <td>{{ $Details['address'] }}</td>
+                                  
+                                        
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Test type :</td>
+                                        
+                                        <td>{{ $Details['test'] }}</td>
+                                  
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Date : </td>
+                                        
+                                        <td>{{ $Details['date'] }}</td>
+                                  
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Selected place : </td>
+                                        
+                                        <td>{{ $Details['place'] }}</td>
+                                  
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Selected time :</td>
+                                        
+                                        <td>{{ $Details['time'] }}</td>
+                                  
+                                        
+                                    </tr>
+
+
+                               
                             </table>
                         </div>
                     </div>
@@ -233,8 +268,51 @@
                             </div> -->
 
         </div>
+         <div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h4>Patient <b>Report</b> </h4>
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-lg-12">
+                    <div class="main-card mb-3 card">
+                    @if(Session::has('flash_message_success'))
+<div class="alert alert-success" role="alert">
+   {{Session::get('flash_message_success')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+                        <div class="card-body">
+                            <h5 class="card-title">Report </h5>
+                            <table class="mb-0 table table-bordered">
+                                
+                                 
+                                  
+                            <form method=post enctype="multipart/form-data" action="{{url('admin/update-report')}}"> {{csrf_field()}}
+                            <input type="hidden" name="app_id" value="{{$Details['id']}}">
+                                    <input type=file name="report" />
+                                    <button class="btn btn-primary" type="submit"  >Submit </button>
+                             
+               </form>
+
+                                  
+
+
+                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
     </div>
+    
     </div>
+    
     </div>
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -253,4 +331,5 @@
     </script>
 
 </body>
+
 @endsection

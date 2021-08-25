@@ -165,7 +165,7 @@
                         <div class="page-title-icon">
 
                         </div>
-                        <div>Announcements
+                        <div>Appoinments
                             <div class="page-title-subheading">
                             </div>
                         </div>
@@ -175,10 +175,10 @@
             <div>
                 <div class="row">
                     <div class="col-sm-8">
-                        <h4>Announcements <b>details</b> </h4>
+                        <h4>Appoinments <b>details</b> </h4>
                     </div>
                     <div class="col-sm-4">
-                        <a href="{{url('admin/add-edit-announcement')}}" style="max-width:150px; float:right; display:inline-block;" class="btn btn-block btn-success">Add New </a>
+                       
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -196,27 +196,31 @@
                             <table class="mb-0 table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>Appoinment ID</th>
+                                        <th> Patient Name</th>
+                                        <th> Mobile Number</th>
+                                        <th> Test Type</th>
+                                        <th> Time</th>
                                         <th> Date</th>
-                                        <th> Title</th>
-                                        <th> content</th>
+
 
                                         <th>Actions</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($announcement as $ann)
+                                    @foreach($details as $ann)
                                     <tr>
                                         <td>{{ $ann->id }}</td>
+                                        <td>{{ $ann->Name }}</td>
+                                        <td>{{ $ann->mobile }}</td>
+                                        <td>{{ $ann->test }}</td>
+                                        <td>{{ $ann->time }}</td>
                                         <td>{{ $ann->date }}</td>
-                                        <td>{{ $ann->title }}</td>
-                                        <td>{{ $ann->content }}</td>
 
                                         <td>
-
-                                            <a href="{{url('admin/add-edit-announcement/'.$ann->id )}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                            <a class="confirmDelete delete" name="Announcements" href="{{url('admin/delete-announcement/'.$ann->id)}}" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                        
+                                            <a href="{{url('admin/update-appoinment/'.$ann->id )}}" style="max-width:100px;  float:right; display:inline-block;" class="btn btn-block btn-primary">View Details </a>
                                         </td>
                                         @endforeach
                                     </tr>

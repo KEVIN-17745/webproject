@@ -9,13 +9,13 @@
                    </div>
                    
                    <div class="col-sm-2 d-none d-lg-block appoint">
-                       <button class="btn btn-info">Book an Appointment</button>
+                       <button class="btn btn-info" ><a href="{{ url('/booking') }}" style="text-decoration:none;color:white;"> Book an Appointment</a></button> 
                    </div>
                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
                        <ul>
                            <li><a href="{{ url('/') }}">Home</a></li>
-                           <li><a href="#about">About Us</a></li>
-                           <li><a href="#services">Services</a></li>
+                          <!-- <li><a href="{{ url('/booking') }}">About Us</a></li> -->
+                           <li><a href="{{ url('/view-appoinments') }}">Appoinments Details</a></li>
                            <li><a href="#contact">Contact Us</a></li>
                            
                            @guest

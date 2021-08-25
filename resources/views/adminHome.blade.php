@@ -40,6 +40,19 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-6">
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body"><h5 class="card-title"><a href="/adminresponce">Responce</a></h5>
+                                            <p></p>
+                                            <div class="text-center">
+                                                <div class="animated lightSpeedIn">
+                                                    <div class="swatch-holder swatch-holder-lg bg-success"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                          <!--   <div class="row">
                                 
