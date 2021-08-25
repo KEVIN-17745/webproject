@@ -1,10 +1,65 @@
-@extends('layouts.admin_layout.admin_layout')
+@extends('layouts.front_layout.front_layout')
 @section('content')
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{url('frontend/assets/images/slider/slider_1.jpg')}}" alt="First slide">
+                    
+                </div>
+                
+                   <div class="carousel-item ">
+                    <img class="d-block w-100" src="{{url('frontend/assets/images/slider/slider_3.jpg')}}" alt="Third slide">
+                     
+                </div>
+                
+                <div class="carousel-item ">
+                    <img class="d-block w-100" src="{{url('frontend/assets/images/slider/slider_2.jpg')}}" alt="Third slide">
+                     
+                </div>
+                
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+    </div>
+    <h4 style="padding-left:20px;">Appoinment Details</h4>
+
+    @if(Session::has('success_message'))
+<div class="alert alert-success" role="alert">
+   {{Session::get('success_message')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif  
+
+@if ($errors->any())
+       <div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+    @endif
+    
+    <section id="contact" class="contact-us-single">
+       
 <style>
     body {
         color: #566787;
@@ -165,20 +220,16 @@
                         <div class="page-title-icon">
 
                         </div>
-                        <div>Announcements
-                            <div class="page-title-subheading">
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="row">
-                    <div class="col-sm-8">
-                        <h4>Announcements <b>details</b> </h4>
-                    </div>
+                    
                     <div class="col-sm-4">
-                        <a href="{{url('admin/add-edit-announcement')}}" style="max-width:150px; float:right; display:inline-block;" class="btn btn-block btn-success">Add New </a>
+                       
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -196,28 +247,31 @@
                             <table class="mb-0 table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                      
+                                        <th> Patient Name</th>
+                                        <th> Mobile Number</th>
+                                        <th> Test Type</th>
+                                        <th> Time</th>
                                         <th> Date</th>
-                                        <th> Title</th>
-                                        <th> content</th>
+                                        <th> Report</th>
 
-                                        <th>Actions</th>
+
+                                       
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($announcement as $ann)
+                                    @foreach($details as $ann)
                                     <tr>
-                                        <td>{{ $ann->id }}</td>
+                                       
+                                        <td>{{ $ann->Name }}</td>
+                                        <td>{{ $ann->mobile }}</td>
+                                        <td>{{ $ann->test }}</td>
+                                        <td>{{ $ann->time }}</td>
                                         <td>{{ $ann->date }}</td>
-                                        <td>{{ $ann->title }}</td>
-                                        <td>{{ $ann->content }}</td>
+                                        <td>{{ $ann->final_report }}</td>
 
-                                        <td>
-
-                                            <a href="{{url('admin/add-edit-announcement/'.$ann->id )}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                            <a class="confirmDelete delete" name="Announcements" href="{{url('admin/delete-announcement/'.$ann->id)}}" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                                        </td>
+                                        
                                         @endforeach
                                     </tr>
                                 </tbody>
@@ -251,6 +305,22 @@
 
         });
     </script>
+ 
+    </section>
 
-</body>
-@endsection
+    <script>
+        function checkOption(obj) {
+    var input = document.getElementsByName("time");
+    for(var i=0; i < input.length; i++) {
+     input[i].disabled = !(obj.value == "lab")
+    }
+}
+        </script>
+           
+
+    
+    
+    
+   
+
+    @endsection

@@ -262,6 +262,18 @@ But you can read the following facts in order to make sure of all pluses of our 
                 <iframe style="width:100%" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249759.19784092825!2d79.10145254589841!3d12.009924873581818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1448883859107" height="480" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
             <div class="col-sm-6 cop-ck">
+
+                @foreach($errors->all() as $error)
+
+                    <div class="alert alert-danger" role="alert">
+                        {{$error}}
+                    </div>
+
+                @endforeach
+
+                <form method="post" action ="/contact">
+                {{csrf_field()}}
+
                 <h2>Contact Form</h2>
                 <div class="row cf-ro">
                     <div class="col-sm-3"><label>Enter Name :</label></div>
@@ -269,24 +281,39 @@ But you can read the following facts in order to make sure of all pluses of our 
                 </div>
                 <div class="row cf-ro">
                     <div class="col-sm-3"><label>Email Address :</label></div>
-                    <div class="col-sm-8"><input type="text" name="name" placeholder="Enter Email Address" class="form-control input-sm"></div>
+                    <div class="col-sm-8"><input type="text" name="email" placeholder="Enter Email Address" class="form-control input-sm"></div>
                 </div>
                 <div class="row cf-ro">
-                    <div class="col-sm-3"><label>Mobile Number:</label></div>
-                    <div class="col-sm-8"><input type="text" name="name" placeholder="Enter Mobile Number" class="form-control input-sm"></div>
+                    <div class="col-sm-3"><label>Enter Address :</label></div>
+                    <div class="col-sm-8"><input type="text" placeholder="Enter Address" name="address" class="form-control input-sm"></div>
                 </div>
                 <div class="row cf-ro">
-                    <div class="col-sm-3"><label>Enter Message:</label></div>
+                    <div class="col-sm-3"><label>Mobile Number :</label></div>
+                    <div class="col-sm-8"><input type="text" name="number" placeholder="Enter Mobile Number" class="form-control input-sm"></div>
+                </div>
+                <div class="row cf-ro">
+                    <div class="col-sm-3"><label>Enter Message :</label></div>
                     <div class="col-sm-8">
-                        <textarea rows="5" placeholder="Enter Your Message" class="form-control input-sm"></textarea>
+                        <textarea rows="5" name="message" placeholder="Enter Your Message" class="form-control input-sm"></textarea>
                     </div>
                 </div>
                 <div class="row cf-ro">
                     <div class="col-sm-3"><label></label></div>
                     <div class="col-sm-8">
-                        <button class="btn btn-info btn-sm">Send Message</button>
+                        <input type="submit" class="btn btn-primary" value="Send Massage">
+                        <input type="submit" class="btn btn-warning" value="Clear">
+                        
                     </div>
                 </div>
+                
+                <div class="row cf-ro">
+                    <div class="col-sm-3"><label></label></div>
+                    <div class="col-sm-8">
+                        <a href="/contact" class="btn btn-success">View Massage</a>
+                    </div>
+                </div>
+
+                </form>
             </div>
         </div>
     </section>

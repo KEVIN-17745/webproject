@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Announcement;
+use App\PatientDetails;
 use Session;
 
 class AnnouncementController extends Controller
@@ -75,4 +76,48 @@ class AnnouncementController extends Controller
         session::flash('success_message',$message);
         return redirect()->back(); 
     }
+
+    public function appoinments(){
+
+        $details = PatientDetails::get()->reverse();
+       
+
+        return view('admin.appoinment')->with(compact('details'));
+    }
+
+   /* public function deleteAppoinment($id){
+
+        Announcement::where('id',$id)->delete();
+
+        $message = 'Appoinment deleted successfully';
+        session::flash('success_message',$message);
+        return redirect()->back(); 
+    }
+    */
+    
+    public function viewDetails($app_id){
+        
+        
+        $Details = PatientDetails::where('id',$app_id)->first();
+    $Details = json_decode(json_encode($Details),true);
+
+    
+        
+
+        return view('admin.patientDetails')->with(compact('Details')); 
+    }
+
+    public function updateReport(Request $request){
+
+        if($request->isMethod('post')){
+    
+            $data = $request->all();
+    
+            PatientDetails::where('id',$data['app_id'])->update(['final_report'=>$data['report']]);
+    
+            return redirect()->back()->with('flash_message_success','Report has been updated successfully!!');
+        }
+    
+       }
+
 }

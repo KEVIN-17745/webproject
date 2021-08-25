@@ -65,8 +65,58 @@
                                     </ul>
                                 </li>
                                 
-                                
+                                <!--contact-->
+                                <li class="mm-active">
+                                    <a href="">
+                                       
+                                       Contact Message
+                                      
+                                    </a>
+                                    <ul
+                                   
+                         class="mm-show"
+                                    >
+                                        <li>
+                                            <a href="/adminresponce">
+                                                <i class="metismenu-icon"></i>
+                                                View Message
+                                            </a>
+                                        </li>
+                                       
+
+                                        
+                                        
+                                    </ul>
+                                </li>
                                
+                                <!-- appoinments-->
+
+                                <li class="mm-active">
+                                    <a href="">
+                                       
+                                        Appoinments
+                                      
+                                    </a>
+                                    <ul
+                                   
+                         class="mm-show"
+                                    >
+                                        <li>
+                                            <a href="{{url('admin/appoinments')}}">
+                                                <i class="metismenu-icon"></i>
+                                                View Appoinments
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-buttons-standard.html">
+                                                <i class="metismenu-icon"></i>
+                                                Add/edit Announcement
+                                            </a>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                </li>
                                
                             </ul>
                         </div>
